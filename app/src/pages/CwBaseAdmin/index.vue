@@ -1,15 +1,38 @@
 <template>
-    <div>
-        基地管理员
+<div>
+    <el-container>
+        <el-aside width="150px">
+        <my-aside></my-aside>
+        </el-aside>
+        <el-main>
+        <my-home></my-home>
+        </el-main>
+    </el-container>
     </div>
 </template>
 
 <script>
+// import { reqGetMoney } from "@/api/index";
+import MyAside from "./MyAside.vue";
+import MyHome from "./MyHome.vue";
 export default {
-    name:'CwBaseAdmin'
-}
+    components: { MyAside, MyHome },
+    name:'CwBaseAdmin',
+    mounted() {
+        console.log(this.$route.query.id);
+        this.$store.dispatch('getCwBaseUserInfo',this.$route.query.id)
+        this.$store.dispatch('getMoney',this.$route.query.id)
+        // reqGetMoney(this.$route.query.id).then(value=>{
+        //     console.log(value);
+        // }).catch(reason=>{
+        //     console.log(reson);
+        // })
+    },
+};
 </script>
 
-<style>
-
+<style scoped>
+el-aside {
+    background-color: #545c64;
+}
 </style>

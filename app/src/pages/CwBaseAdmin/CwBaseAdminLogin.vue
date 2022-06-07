@@ -76,13 +76,13 @@ export default {
                 console.log(this.ruleForm);
                 let phoneNumber = this.ruleForm.phoneNumber
                 let password = this.ruleForm.pass
-                axios.post('http://localhost:8081/api/cwBaseAdminLogin',{
+                axios.post('http://localhost:8080/api/cwBaseAdminLogin',{
                     phoneNumber,
                     password
                 }).then(value=>{
-                    console.log(value);
+                    // console.log(value.data[0]._id);
                     if(value.status==200){
-                        this.$router.push({name:'cwUser',query:{id:value.data._id}})
+                        this.$router.push({name:'cwUser',query:{id:value.data[0]._id}})
                     }
                 }).catch(reason=>{
                     this.dialogVisible = true

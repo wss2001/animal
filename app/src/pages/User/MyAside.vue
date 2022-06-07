@@ -1,4 +1,5 @@
 <template>
+<div>
   <el-row class="tac">
     <el-col>
       <h1>用户系统</h1>
@@ -22,6 +23,7 @@
       </el-menu>
     </el-col>
   </el-row>
+  </div>
 </template>
 
 <script>

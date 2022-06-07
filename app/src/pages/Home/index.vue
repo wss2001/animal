@@ -16,6 +16,7 @@
         </ul>
         <Foots></Foots>
         <Foot></Foot>
+        <!-- <MyProtocol></MyProtocol> -->
     </div>
     
 </template>
@@ -24,9 +25,10 @@
 import {mapState} from 'vuex'
 import Foot from '@/components/Foot.vue'
 import Foots from '@/components/Foots.vue'
+import MyProtocol from '@/components/MyProtocol.vue'
 export default {
     name:'Home',
-    components:{Foot,Foots},
+    components:{Foot,Foots,MyProtocol},
     computed: {
         ...mapState({
             cwBase:state=>state.cwBase.cwBase

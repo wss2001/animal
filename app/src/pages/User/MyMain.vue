@@ -1,4 +1,5 @@
 <template>
+<div>
   <el-container>
     <el-aside width="150px">
       <my-aside></my-aside>
@@ -7,6 +8,7 @@
       <my-home></my-home>
     </el-main>
   </el-container>
+  </div>
 </template>
 
 <script>

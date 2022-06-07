@@ -1,6 +1,7 @@
 <template>
+
     <div class="banxin">
-        <div>用户手册</div>
+
         <div>
             <ul class="cwBaseLi">
             <li v-for="item in cwArr" :key="item._id" @click="goCwInfo(item._id)">
@@ -20,23 +21,14 @@
         <div class="comment">
             <!-- 评论展示 -->
             <el-row :gutter="12">
-
-                <!-- <el-col :span="16"> -->
-                <el-card shadow="always">
-                <span>评论内容：头上一片晴天，心中一个想念</span>
-                <el-divider content-position="left">留言者：少年包青天</el-divider>
-                <el-divider content-position="right">阿里云</el-divider>
+                <el-card shadow="always" v-for="item in comment" :key="item._id">
+                <span>评论内容：{{item.content}}</span>
+                <el-divider content-position="left">{{item.date}}</el-divider>
+                <el-divider content-position="right">留言者：{{item.name}}</el-divider>
                 </el-card>
-                <el-card shadow="always">
-                <span>头上一片晴天，心中一个想念</span>
-                <el-divider content-position="left">少年包青天</el-divider>
-                </el-card>
-                <el-card shadow="always">
-                <span>头上一片晴天，心中一个想念</span>
-                <el-divider content-position="left">少年包青天</el-divider>
-                </el-card>
-                <!-- </el-col> -->
-        </el-row>
+                
+            </el-row>
+            <!-- 发表评论 -->
         <el-row>
             <el-card :body-style="{ backgroundColor: '#f9ce6a' }" shadow="hover">
                 <h2>请输入你对该基地的评论</h2>
@@ -60,21 +52,26 @@
 
 <script>
 import {mapState} from 'vuex'
-import axios from 'axios'
-import { reqGetComment } from "@/api/index.js";
+import Ys from './Yonghu.vue'
+import { reqGetComment,reqSubmitComment } from "@/api/index";
 export default {
     name:'CwBaseInfo',
     data() {
         return {
+            comment:[],
             form:{
                 content:'',
                 name:''
             }
         }
     },
+    components:{Ys},
     mounted() {
-        let result = reqGetComment()
-        console.log(result);
+        reqGetComment().then(value=>{
+            this.comment = value
+        }).catch(reason=>{
+            console.log(reason);
+        })
         let _id = this.$route.query._id
         this.$store.dispatch('getCwList',_id)
     },
@@ -89,7 +86,17 @@ export default {
         },
         onSubmit(){
             let id = this.$route.query._id
-
+            reqSubmitComment(id,this.form).then(value=>{
+                if(value == 'ok'){
+                    reqGetComment().then(value=>{
+                        this.comment = value
+                    }).catch(reason=>{
+                        console.log(reason);
+                    })
+                }
+            }).catch(reason=>{
+                console.log(reason);
+            })
             this.qx()
         },
         qx(){

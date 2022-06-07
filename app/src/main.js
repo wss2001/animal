@@ -5,9 +5,15 @@ import router from '@/router'
 // 引入vuex
 import store from '@/store'
 // 引入element组件
-import { Divider,Card,Upload,Checkbox,CheckboxGroup,Aside,Main,Container,Tooltip,Switch,Slider,Col,DropdownItem,DropdownMenu,Dropdown,MenuItemGroup,MenuItem,Submenu,Menu,Row,Button, Dialog,Input,FormItem ,Form,Popover,Image,PageHeader,Tabs,TabPane,Icon,Radio,RadioGroup,RadioButton} from 'element-ui';
+import {  Table,TableColumn,Tag,DescriptionsItem,Descriptions,Result,Divider,Card,Upload,Checkbox,CheckboxGroup,Aside,Main,Container,Tooltip,Switch,Slider,Col,DropdownItem,DropdownMenu,Dropdown,MenuItemGroup,MenuItem,Submenu,Menu,Row,Button, Dialog,Input,FormItem ,Form,Popover,Image,PageHeader,Tabs,TabPane,Icon,Radio,RadioGroup,RadioButton} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Aside)
+Vue.use(Tag)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Result)
+Vue.use(DescriptionsItem)
+Vue.use(Descriptions)
 Vue.use(Divider)
 Vue.use(Card)
 Vue.use(Upload)

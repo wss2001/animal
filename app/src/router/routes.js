@@ -4,12 +4,16 @@ import CwInfo from '@/pages/CwInfo'
 import UserLogin from '@/pages/User/UserLogin.vue'
 import UserRegister from '@/pages/User/UserRegister.vue'
 import AdminLogin from '@/pages/Admin/AdminLogin.vue'
+import Admin from '@/pages/Admin/index.vue'
 import CwBaseAdminLogin from '@/pages/CwBaseAdmin/CwBaseAdminLogin.vue'
 import User from '@/pages/User/MyMain.vue'
 import MyMessage from '@/pages/User/MyMessage.vue'
 import MyCertificate from '@/pages/User/MyCertificate.vue'
 import MyPet from '@/pages/User/MyPet.vue'
 import CwBaseAdmin from '@/pages/CwBaseAdmin/index.vue'
+import PetCount from '@/pages/CwBaseAdmin/PetCount.vue'
+import LoginMessage from '@/pages/CwBaseAdmin/LoginMessage.vue'
+import AddPet from '@/pages/CwBaseAdmin/AddPet.vue'
 
 export default [
     {
@@ -31,7 +35,7 @@ export default [
         meta:{showFooter:false,showHeader:true,content:'流浪动物详情'}
     },
     {
-        path:'/user/',
+        path:'/user',
         name:'user',
         component:User,
         meta:{showFooter:false,showHeader:true,content:'用户首页'},
@@ -76,6 +80,12 @@ export default [
         meta:{showFooter:false,showHeader:true,content:'后台登录'}
     },
     {
+        path:'/admin',
+        name:'admin',
+        component:Admin,
+        meta:{showFooter:false,showHeader:true,content:'后台管理'}
+    },
+    {
         path:'/cwBaseAdminLogin',
         name:'cwBaseAdminLogin',
         component:CwBaseAdminLogin,
@@ -85,7 +95,23 @@ export default [
         path:'/cwUser',
         name:'cwUser',
         component:CwBaseAdmin,
-        meta:{showFooter:false,showHeader:true,content:'基地管理人员登录'}
+        meta:{showFooter:false,showHeader:true,content:'基地管理人员登录'},
+        children: [{
+            path: 'message',
+            name: 'LoginMessage',
+            component: LoginMessage,
+            meta:{showFooter:false,showHeader:true,content:'管理员信息'}
+        }, {
+            path: 'add',
+            name: 'AddPet',
+            component: AddPet,
+            meta:{showFooter:false,showHeader:true,content:'新增宠物'}
+        }, {
+            path: 'count',
+            name: 'PetCount',
+            component: PetCount,
+            meta:{showFooter:false,showHeader:true,content:'宠物情况'}
+        }]
     },
     
 ]

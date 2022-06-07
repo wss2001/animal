@@ -138,11 +138,11 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate(async (valid) => {
             if (valid) {
-                console.log(this.ruleForm);
+                // console.log(this.ruleForm);
                 let result = await reqUserRegister(this.ruleForm)
-                // console.log(result);
+                // console.log(result.insertedIds['0']);
                 if(result){
-                    this.$router.push({name:'user',query:{_id:result[0]._id}})
+                    this.$router.push({name:'user',query:{_id:result.insertedIds['0']}})
                 }
             } else {
                 console.log('error submit!!');

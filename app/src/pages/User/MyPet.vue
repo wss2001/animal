@@ -1,4 +1,5 @@
 <template>
+<div>
     <el-row>
         <el-col
         v-show="!show"
@@ -6,10 +7,10 @@
         v-for="(item, index) in cwInfo"
         :key="item._id"
         :offset="index > 0 ? 3 : 0"
-        @click="gocw(item[index]._id)"
+        
         >
-        <el-card :body-style="{ padding: '0px' }">
-            <img :src="item.img" class="image" />
+        <el-card :body-style="{ padding: '0px' }" >
+            <img :src="item.img" class="image" @click="gocw(item._id)" />
             <div style="padding: 14px">
             <span>{{ item.name }}</span>
             <div class="bottom clearfix">
@@ -24,6 +25,7 @@
           你还没有收养宠物哦
         </el-col>
     </el-row>
+    </div>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -45,7 +47,7 @@ export default {
         this.show = false
       for(let i =0;i<this.cw.length;i++){
         console.log(cw[i]);
-        axios.post('http://localhost:8081/api/getCwInfo',{id:cw[i]}).then(value=>{
+        axios.post('http://localhost:8080/api/getCwInfo',{id:cw[i]}).then(value=>{
           cwInfo.push(value.data[0])
           console.log(cwInfo);
           
@@ -65,6 +67,7 @@ export default {
     },
     methods: {
       gocw(id){
+        console.log(11);
         this.$router.push({name:'cwInfo',query:{id:id}})
       }
     },

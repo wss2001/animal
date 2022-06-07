@@ -1,7 +1,9 @@
-import {reqGetCwBase,reqGetUserInfo} from '@/api'
+import {reqGetCwBase,reqGetUserInfo,reqGetCwBaseUserInfo,reqGetMoney} from '@/api'
 const state = {
     cwBase:[],
-    userInfo:[]
+    userInfo:[],
+    cwBaseUserInfo:[],
+    money:0
 }
 const getters = {
 
@@ -16,6 +18,16 @@ const actions = {
         let result = await reqGetUserInfo(value) || []
         // console.log(result);
         context.commit('GETUSERINFO',result)
+    },
+    async getCwBaseUserInfo(context,value){
+        let result = await reqGetCwBaseUserInfo(value) || []
+        // console.log(result);
+        context.commit('GETCWBASEUSERINFO',result)
+    },
+    async getMoney(context,value){
+        let result = await reqGetMoney(value) || []
+        // console.log(result);
+        context.commit('GETMONEY',result)
     }
 }
 const mutations = {
@@ -24,7 +36,13 @@ const mutations = {
     },
     GETUSERINFO(state,value){
         state.userInfo = value
-    }
+    },
+    GETCWBASEUSERINFO(state,value){
+        state.cwBaseUserInfo = value
+    },
+    GETMONEY(state,value){
+        state.money = value
+    },
 }
 export default{
     state,

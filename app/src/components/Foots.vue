@@ -61,7 +61,7 @@ export default {
 li p{
     
     font-family: "Microsoft YaHei";
-    -webkit-user-select: none;
+ 
     -webkit-text-size-adjust: none;
     text-align: center;
     margin: 0;
@@ -144,7 +144,7 @@ i {
 }
 h2{
         font-family: "Microsoft YaHei";
-    -webkit-user-select: none;
+ 
     -webkit-text-size-adjust: none;
     margin: 0;
     padding: 0;
@@ -157,7 +157,7 @@ h2{
 }
 h3{
     font-family: "Microsoft YaHei";
-    -webkit-user-select: none;
+ 
     -webkit-text-size-adjust: none;
     text-align: center;
     margin: 0;

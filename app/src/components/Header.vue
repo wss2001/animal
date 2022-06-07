@@ -4,7 +4,7 @@
     </el-page-header>     
     <el-tabs type="card" @tab-click="handleClick">
     <el-tab-pane label="用户注册" name="first" @click="goUserRegister"></el-tab-pane>
-    <el-tab-pane label="后台管理" name="second" @click="goAdminLogin"></el-tab-pane>
+    <!-- <el-tab-pane label="后台管理" name="second" @click="goAdminLogin"></el-tab-pane> -->
     <el-tab-pane label="基地管理登录" name="third" @click="goBaseUser"></el-tab-pane>
     <el-tab-pane label="用户登录" name="fourth" @click="goUserLogin"></el-tab-pane>
     <el-tab-pane label="首页" name="five" @click="goHome"></el-tab-pane>

@@ -69,6 +69,12 @@ export default {
             dialogVisible:false
         };
         },
+    created() {
+        if(document.cookie.includes('userToken')){
+                let myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)userToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                this.$router.push({name:'user',query:{_id:myCookie}})
+        }
+    },
     methods: {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
@@ -76,7 +82,7 @@ export default {
                 
                 let phoneNumber = this.ruleForm.phoneNumber
                 let password = this.ruleForm.pass
-                axios.post('http://localhost:8081/api/userLogin',{
+                axios.post('http://localhost:8080/api/userLogin',{
                     phoneNumber,
                     password
                 }).then(value=>{
